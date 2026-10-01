@@ -169,9 +169,20 @@ main {
     min-width: 0
 }
 
+.timer-display {
+    display: flex;
+    align-items: baseline;
+    gap: 10px
+}
+
 .timer {
     font: 500 clamp(6.3rem, 16vw, 10.8rem)/.9 'DM Mono', monospace;
     letter-spacing: -.08em
+}
+
+.timer-unit {
+    color: var(--muted);
+    font: 500 11px 'DM Mono', monospace
 }
 
 .focus-main .progress-wrap {
@@ -560,8 +571,11 @@ footer {
     }
 
     .timer {
-        text-align: center;
         font-size: clamp(5.5rem, 23vw, 8rem)
+    }
+
+    .timer-display {
+        justify-content: center
     }
 
     .focus-main .progress-wrap {

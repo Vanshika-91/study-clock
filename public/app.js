@@ -214,7 +214,7 @@ function renderWeek() {
 function showStats(show) {
   $('studyBox').hidden = show;
   $('statsView').hidden = !show;
-  if (show) { weekOffset = 0; $('signInBtn').hidden = signedIn; renderWeek(); }
+  if (show) { weekOffset = 0; renderWeek(); }
 }
 
 // ---------- events ----------
@@ -229,7 +229,6 @@ $('todayTime').onclick = () => showStats(true);
 $('backStats').onclick = () => showStats(false);
 $('prevWeek').onclick = () => { weekOffset--; renderWeek(); };
 $('nextWeek').onclick = () => { if (weekOffset < 0) { weekOffset++; renderWeek(); } };
-$('signInBtn').onclick = () => location.href = '/login?next=/';
 
 document.addEventListener('keydown', e => {
   if (e.ctrlKey || e.metaKey || e.altKey || $('studyBox').hidden) return;

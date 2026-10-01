@@ -24,7 +24,10 @@
             <p id="sessionLabel" class="eyebrow">focus session</p>
             <div class="focus-main">
               <div class="timer-wrap">
-                <div id="timer" class="timer">25:00</div>
+                <div class="timer-display">
+                  <div id="timer" class="timer">25:00</div>
+                  <span class="timer-unit">minutes</span>
+                </div>
                 <div class="progress-wrap"><div id="progress"></div></div>
               </div>
               <div class="plant-stage">
@@ -264,9 +267,6 @@
           </div>
           <div id="historyChart" class="history-chart"></div>
           <div id="historyLabels" class="history-labels"></div>
-          <button id="signInBtn" hidden class="sync-btn">
-            Sign in to sync across devices
-          </button>
         </div>
       </section>
       <footer>focus gently</footer>
