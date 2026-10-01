@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sign in · Study Clock</title>
+    <link rel="stylesheet" href="/theme.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <main class="min-h-[100dvh] flex items-center justify-center px-5 py-8">
+      <div class="w-full max-w-sm text-center">
+        <div class="flex justify-center items-center gap-3 mb-12">
+          <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent)]"></span
+          ><span class="text-sm font-semibold">study clock</span>
+        </div>
+        <div
+          id="loginBox"
+          class="bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-7 text-left"
+        >
+          <p class="text-lg font-semibold mb-2">Save your study time</p>
+          <p class="text-sm text-[var(--muted)] mb-7">
+            Sign in once and your history follows you across devices.
+          </p>
+          <form id="loginForm">
+            <label class="block text-xs text-[var(--muted)] mb-2">Email</label
+            ><input
+              id="email"
+              type="email"
+              autocomplete="username webauthn"
+              required
+              class="w-full bg-[var(--bg)] border border-[var(--line)] rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--accent)]"
+            /><button
+              class="w-full mt-4 py-3 rounded-full bg-[var(--ink)] text-[var(--bg)] text-sm font-semibold"
+            >
+              Continue
+            </button>
+          </form>
+          <form id="codeForm" hidden>
+            <label class="block text-xs text-[var(--muted)] mb-2"
+              >6-digit code</label
+            ><input
+              id="code"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              maxlength="6"
+              required
+              class="w-full bg-[var(--bg)] border border-[var(--line)] rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--accent)]"
+            /><button
+              class="w-full mt-4 py-3 rounded-full bg-[var(--ink)] text-[var(--bg)] text-sm font-semibold"
+            >
+              Sign in
+            </button>
+          </form>
+          <p id="message" class="text-xs text-[var(--muted)] mt-5"></p>
+        </div>
+      </div>
+    </main>
+    <script>
+      const next = new URLSearchParams(location.search).get("next") || "/";
+      let email = "";
+      const form = document.getElementById("loginForm"),
+        codeForm = document.getElementById("codeForm"),
+        message = document.getElementById("message");
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        email = document.getElementById("email").value;
+        try {
+          const r = await hatchable.auth.startLogin({ email });
+          message.textContent = "Check your email for the 6-digit code.";
+          form.hidden = true;
+          codeForm.hidden = false;
+        } catch (err) {
+          message.textContent =
+            err.message || "Something went wrong. Please try again.";
+        }
+      };
+      codeForm.onsubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await hatchable.auth.verifyCode({
+            email,
+            code: document.getElementById("code").value,
+          });
+          location.href = next.startsWith("/") ? next : "/";
+        } catch (err) {
+          message.textContent =
+            err.message || "That code did not work. Please try again.";
+        }
+      };
+    </script>
+  </body>
+</html>

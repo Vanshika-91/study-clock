@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#101311" />
+    <title>Study Clock</title>
+    <link rel="stylesheet" href="/theme.css" />
+  </head>
+  <body>
+    <main>
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-dot"></span><span>study clock</span>
+        </div>
+        <button id="todayTime" class="today">Today · —</button>
+      </header>
+      <section class="page-wrap">
+        <div class="study-box" id="studyBox">
+          <div id="focusView">
+            <p id="sessionLabel" class="eyebrow">focus session</p>
+            <div class="focus-main">
+              <div class="timer-wrap">
+                <div id="timer" class="timer">25:00</div>
+                <div class="progress-wrap"><div id="progress"></div></div>
+              </div>
+              <div class="plant-stage">
+                <svg
+                  id="plant"
+                  class="plant-svg"
+                  viewBox="0 0 200 240"
+                  role="img"
+                  aria-label="A plant that grows as you study"
+                >
+                  <ellipse
+                    cx="100"
+                    cy="234"
+                    rx="52"
+                    ry="5"
+                    fill="#000"
+                    opacity=".25"
+                  />
+                  <path
+                    id="stem"
+                    pathLength="1"
+                    d="M100 174 C100 150 95 120 100 72"
+                    fill="none"
+                    stroke="#7fa66f"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-dasharray="1"
+                    stroke-dashoffset="1"
+                  />
+                  <g transform="translate(99 152) scale(-1 1)">
+                    <g class="leaf" data-at="0.08">
+                      <path
+                        d="M0 0 C-12 -16 -36 -16 -46 -4 C-34 8 -12 10 0 0Z"
+                        fill="#6f9a62"
+                      />
+                      <path
+                        d="M0 0 L-34 -5"
+                        stroke="#4f7a47"
+                        stroke-width="1.4"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <g transform="translate(99 136) scale(1 1)">
+                    <g class="leaf" data-at="0.2">
+                      <path
+                        d="M0 0 C-12 -16 -36 -16 -46 -4 C-34 8 -12 10 0 0Z"
+                        fill="#6f9a62"
+                      />
+                      <path
+                        d="M0 0 L-34 -5"
+                        stroke="#4f7a47"
+                        stroke-width="1.4"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <g transform="translate(98 112) scale(-0.9 0.9)">
+                    <g class="leaf" data-at="0.38">
+                      <path
+                        d="M0 0 C-12 -16 -36 -16 -46 -4 C-34 8 -12 10 0 0Z"
+                        fill="#6f9a62"
+                      />
+                      <path
+                        d="M0 0 L-34 -5"
+                        stroke="#4f7a47"
+                        stroke-width="1.4"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <g transform="translate(98 98) scale(0.9 0.9)">
+                    <g class="leaf" data-at="0.55">
+                      <path
+                        d="M0 0 C-12 -16 -36 -16 -46 -4 C-34 8 -12 10 0 0Z"
+                        fill="#6f9a62"
+                      />
+                      <path
+                        d="M0 0 L-34 -5"
+                        stroke="#4f7a47"
+                        stroke-width="1.4"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <g transform="translate(100 80) scale(-0.7 0.7)">
+                    <g class="leaf" data-at="0.7">
+                      <path
+                        d="M0 0 C-12 -16 -36 -16 -46 -4 C-34 8 -12 10 0 0Z"
+                        fill="#6f9a62"
+                      />
+                      <path
+                        d="M0 0 L-34 -5"
+                        stroke="#4f7a47"
+                        stroke-width="1.4"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <g transform="translate(100 76) scale(0.7 0.7)">
+                    <g class="leaf" data-at="0.78">
+                      <path
+                        d="M0 0 C-12 -16 -36 -16 -46 -4 C-34 8 -12 10 0 0Z"
+                        fill="#6f9a62"
+                      />
+                      <path
+                        d="M0 0 L-34 -5"
+                        stroke="#4f7a47"
+                        stroke-width="1.4"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </g>
+                  </g>
+                  <g transform="translate(100 66)">
+                    <g class="flower" data-at="0.99">
+                      <ellipse
+                        cx="0"
+                        cy="-15"
+                        rx="7"
+                        ry="12"
+                        fill="#f2c4d0"
+                        transform="rotate(0)"
+                      />
+                      <ellipse
+                        cx="0"
+                        cy="-15"
+                        rx="7"
+                        ry="12"
+                        fill="#f2c4d0"
+                        transform="rotate(60)"
+                      />
+                      <ellipse
+                        cx="0"
+                        cy="-15"
+                        rx="7"
+                        ry="12"
+                        fill="#f2c4d0"
+                        transform="rotate(120)"
+                      />
+                      <ellipse
+                        cx="0"
+                        cy="-15"
+                        rx="7"
+                        ry="12"
+                        fill="#f2c4d0"
+                        transform="rotate(180)"
+                      />
+                      <ellipse
+                        cx="0"
+                        cy="-15"
+                        rx="7"
+                        ry="12"
+                        fill="#f2c4d0"
+                        transform="rotate(240)"
+                      />
+                      <ellipse
+                        cx="0"
+                        cy="-15"
+                        rx="7"
+                        ry="12"
+                        fill="#f2c4d0"
+                        transform="rotate(300)"
+                      />
+                      <circle r="8" fill="#f0c95a" />
+                    </g>
+                  </g>
+                  <path
+                    d="M60 176 H140 L131 224 Q130 232 122 232 H78 Q70 232 69 224 Z"
+                    fill="#b8734a"
+                  />
+                  <rect
+                    x="55"
+                    y="168"
+                    width="90"
+                    height="14"
+                    rx="6"
+                    fill="#cd8a5c"
+                  />
+                  <circle cx="88" cy="196" r="2.6" fill="#3b2418" />
+                  <circle cx="112" cy="196" r="2.6" fill="#3b2418" />
+                  <path
+                    id="mouth"
+                    d="M94 208 Q100 203 106 208"
+                    fill="none"
+                    stroke="#3b2418"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                  /></svg
+                ><span id="plantCaption" class="plant-caption"
+                  >Plant a seed</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="startBtn" class="start">Start</button
+            ><button id="resetBtn" class="reset">Reset</button>
+          </div>
+          <div id="presets" class="presets">
+            <button data-min="15">15</button
+            ><button data-min="25" class="active">25</button
+            ><button data-min="45">45</button><button data-min="60">60</button>
+          </div>
+          <p class="hint">space · start / pause &nbsp;&nbsp; r · reset</p>
+        </div>
+        <div id="statsView" class="stats-screen" hidden>
+          <div class="stats-head">
+            <button class="back-btn" id="backStats">Study</button>
+            <div>
+              <p class="stats-title">Study history</p>
+              <p class="stats-subtitle">
+                Your weekly focus, one day at a time.
+              </p>
+            </div>
+          </div>
+          <div class="week-switcher">
+            <button id="prevWeek" class="week-arrow" aria-label="Previous week">
+              ‹
+            </button>
+            <div>
+              <p id="weekTitle" class="week-title">This week</p>
+              <p id="weekRange" class="week-range">—</p>
+            </div>
+            <button id="nextWeek" class="week-arrow" aria-label="Next week">
+              ›
+            </button>
+          </div>
+          <div class="mini-stat">
+            <span id="bigStat">—</span
+            ><small id="cuteStat">Keep going 🌱</small>
+          </div>
+          <div id="historyChart" class="history-chart"></div>
+          <div id="historyLabels" class="history-labels"></div>
+          <button id="signInBtn" hidden class="sync-btn">
+            Sign in to sync across devices
+          </button>
+        </div>
+      </section>
+      <footer>focus gently</footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

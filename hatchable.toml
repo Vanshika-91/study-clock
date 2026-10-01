@@ -1,0 +1,7 @@
+[auth]
+enabled = true
+providers = ["email"]
+
+[db.tables.study_sessions]
+read = "own"
+write = "own"
